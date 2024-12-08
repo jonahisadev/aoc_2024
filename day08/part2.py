@@ -1,13 +1,6 @@
-import types
 import string
 from common import load_input
 input = load_input()
-
-consts = types.SimpleNamespace();
-consts.UP=1
-consts.RIGHT=2
-consts.DOWN=3
-consts.LEFT=4
 
 class Grid:
     def __init__(self, s):
@@ -45,17 +38,6 @@ class Grid:
         if not self.validate_coord(new_coord):
             return None
         return self.at(new_coord)
-
-    def peek(self, coord, status):
-        match status:
-            case consts.UP:
-                return self.relative(coord, (0, -1))
-            case consts.RIGHT:
-                return self.relative(coord, (1, 0))
-            case consts.DOWN:
-                return self.relative(coord, (0, 1))
-            case consts.LEFT:
-                return self.relative(coord, (-1, 0))
 
     def dist(self, p1, p2):
         return (p2[0] - p1[0], p2[1] - p1[1])
